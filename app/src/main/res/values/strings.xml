@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">E_commerce</string>
+    <string name="title_home">Home</string>
+    <string name="title_commande">Commande</string>
+    <string name="title_panier">Panier</string>
+    <string name="title_account">Account</string>
+
+    <string name="content_description_favorite">Panier</string>
+    <string name="more">plus</string>
+
+    <string name="content_description_more">plus</string>
+    <string name="adresse_email">Entrez votre address Email</string>
+    <string name="password">Entrez votre mot de passe</string>
+    <string name="connexion">Connecter</string>
+    <string name="mot_de_passe_oubli">Mot de passe oublié</string>
+    <string name="no_account">Pas de compte?</string>
+    <string name="inscription">Inscription</string>
+    <string name="have_account">J\'ai déja un compte</string>
+    <string name="confirm_password">Confirmation de mot de passe</string>
+    <string name="full_name">Nom complet</string>
+    <string name="s_authentifier">Modifier mon mot de passe</string>
+    <string name="se_connecter">Me connecter</string>
+    <string name="select"> Categorie de product</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="selctionner_image">Selctionner Image</string>
+    <string name="choisir_image">Choisir image</string>
+
+</resources>

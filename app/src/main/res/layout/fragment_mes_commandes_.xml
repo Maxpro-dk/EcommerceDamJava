@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".mes_commandes_Fragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:elevation="3dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mes commandes"
+            android:textAlignment="center"
+            android:textColor="@color/bleue"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        app:tabTextAppearance="@style/MyCustomTabText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:overScrollMode="never"
+        app:tabBackground="@drawable/backgrounditem"
+        app:tabSelectedTextColor="@color/bleue_foncer"
+        app:tabPaddingEnd="30dp"
+        app:tabPaddingStart="24dp"
+        app:tabRippleColor="@null"
+        app:tabIndicatorHeight="0dp">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/onglet_tous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En cours" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/onglet_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Achevé" />
+    </com.google.android.material.tabs.TabLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.e_commerce.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.example.e_commerce.ui.account.AccountFragment"
+        tools:layout="@layout/account_fragment" />
+    <fragment
+        android:id="@+id/navigation_commande"
+        android:name="com.example.e_commerce.ui.commande.CommandeFragment"
+        tools:layout="@layout/commande_fragment" />
+    <fragment
+        android:id="@+id/navigation_panier"
+        android:name="com.example.e_commerce.ui.panier.PanierFragment"
+        tools:layout="@layout/panier_fragment" />
+    <fragment
+        android:id="@+id/createProductFragment"
+        android:name="com.example.e_commerce.ui.createproduct.CreateProductFragment"
+        android:label="create_product_fragment"
+        tools:layout="@layout/create_product_fragment" >
+        <action
+            android:id="@+id/action_createProductFragment_to_mon_produit_Fragment"
+            app:destination="@id/mon_produit_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allProductFragment"
+        android:name="com.example.e_commerce.ui.allproduct.AllProductFragment"
+        android:label="all_product_fragment"
+        tools:layout="@layout/all_product_fragment" />
+    <fragment
+        android:id="@+id/newProductFragment"
+        android:name="com.example.e_commerce.ui.newproduct.NewProductFragment"
+        android:label="new_product_fragment"
+        tools:layout="@layout/new_product_fragment" />
+    <fragment
+        android:id="@+id/detailProductFragment"
+        android:name="com.example.e_commerce.ui.detailProduct.DetailProductFragment"
+        android:label="detail_product_fragment"
+        tools:layout="@layout/detail_product_fragment" />
+    <fragment
+        android:id="@+id/mon_produit_Fragment"
+        android:name="com.example.e_commerce.mon_produit_Fragment"
+        android:label="fragment_mon_produit_"
+        tools:layout="@layout/fragment_mon_produit_" >
+        <action
+            android:id="@+id/action_mon_produit_Fragment_to_createProductFragment"
+            app:destination="@id/createProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mes_produits_Fragment"
+        android:name="com.example.e_commerce.mes_produits_Fragment"
+        android:label="fragment_mes_produits_"
+        tools:layout="@layout/fragment_mes_produits_" >
+        <action
+            android:id="@+id/action_mes_produits_Fragment_to_mon_produit_Fragment"
+            app:destination="@id/mon_produit_Fragment" />
+    </fragment>
+
+</navigation>
