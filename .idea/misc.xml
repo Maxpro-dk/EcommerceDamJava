@@ -28,7 +28,7 @@
         <entry key="app/src/main/res/drawable/placeholder_background.xml" value="0.2328125" />
         <entry key="app/src/main/res/drawable/round_button_dlete.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/round_button_valid.xml" value="0.21197916666666666" />
-        <entry key="app/src/main/res/layout/account_fragment.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/account_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_bienvenue2.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.16032608695652173" />
         <entry key="app/src/main/res/layout/activity_inscription.xml" value="0.19322916666666667" />

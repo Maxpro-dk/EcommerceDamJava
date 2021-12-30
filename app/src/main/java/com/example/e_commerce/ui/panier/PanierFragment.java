@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_commerce.Controller.ControllerPanier;
+import com.example.e_commerce.activities.MainActivity;
 import com.example.e_commerce.adapter.ChangeNumberItemsListener;
 import com.example.e_commerce.adapter.PanierAdapter;
 import android.view.LayoutInflater;
@@ -73,5 +74,12 @@ public class PanierFragment extends Fragment {
         binding.taxTxt.setText(String.valueOf(montantdisponible));
         binding.totalrestant.setText(String.valueOf(montanatrestant));
         Toast.makeText(getContext(), "Calcul effectué", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void onStart() {
+        MainActivity.showBottomBar();
+        super.onStart();
+
     }
 }

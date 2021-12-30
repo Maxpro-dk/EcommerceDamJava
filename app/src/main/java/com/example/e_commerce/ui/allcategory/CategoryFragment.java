@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.e_commerce.R;
+import com.example.e_commerce.activities.MainActivity;
 
 public class CategoryFragment extends Fragment {
 
@@ -31,6 +32,14 @@ public class CategoryFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+
+    @Override
+    public void onStart() {
+        MainActivity.showBottomBar();
+        super.onStart();
+
     }
 
 }

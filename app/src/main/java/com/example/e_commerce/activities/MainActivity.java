@@ -1,5 +1,6 @@
 package com.example.e_commerce.activities;
 
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
 
@@ -40,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public static void hideBottomBar(){
 
-       navView.findViewById(R.id.nav_view).setVisibility(View.GONE);
+       navView.setVisibility(View.GONE);
     }
     public static void showBottomBar(){
-
-        navView.findViewById(R.id.nav_view).setVisibility(View.VISIBLE);
+        if (  navView.getVisibility()!=View.VISIBLE)
+        navView.setVisibility(View.VISIBLE);
     }
 
 }
