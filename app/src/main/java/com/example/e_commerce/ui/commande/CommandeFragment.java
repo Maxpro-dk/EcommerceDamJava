@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.e_commerce.R;
+import com.example.e_commerce.activities.MainActivity;
 
 public class CommandeFragment extends Fragment {
 
@@ -32,5 +33,15 @@ public class CommandeFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(CommandeViewModel.class);
         // TODO: Use the ViewModel
     }
+
+
+
+    @Override
+    public void onResume() {
+        MainActivity.showBottomBar();
+        super.onResume();
+
+    }
+
 
 }

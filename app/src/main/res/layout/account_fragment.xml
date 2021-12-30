@@ -121,7 +121,7 @@
                 android:textAlignment="center"
                 tools:ignore="MissingConstraints" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="11dp">
@@ -132,177 +132,232 @@
                     android:orientation="vertical"
                     android:background="@color/white">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/m_40"
                         android:orientation="horizontal"
-                        android:background="@color/white"
-                        android:layout_marginBottom="11dp">
+
+                        >
 
                         <ImageView
+                            android:id="@+id/favorite_icon"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:src="@drawable/favorite"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="10dp" />
+                            android:layout_marginLeft="10dp"
+                            android:layout_centerVertical="true"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/favorite"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="50dp"
                             android:text="Favories"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="15dp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20dp" />
 
                         <ImageView
+                            android:id="@+id/favorite_go"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/profile_retour"
                             android:layout_marginLeft="178dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    </RelativeLayout>
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/m_40"
                         android:orientation="horizontal"
-                        android:background="@color/white"
-                        android:layout_marginBottom="11dp">
+
+                        >
 
                         <ImageView
+                            android:id="@+id/my_products_icon"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:src="@drawable/mes_produits_profile"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="10dp" />
+                            android:layout_marginLeft="10dp"
+                            android:layout_centerVertical="true"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/my_products"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="50dp"
                             android:text="Mes produits"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="15dp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20dp" />
 
                         <ImageView
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/profile_retour"
-                            android:layout_marginLeft="135dp" />
-                    </LinearLayout>
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="178dp"
+                            android:src="@drawable/profile_retour" />
+                    </RelativeLayout>
 
-                    <LinearLayout
+                    <RelativeLayout
+
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/m_40"
                         android:orientation="horizontal"
-                        android:background="@color/white"
-                        android:layout_marginBottom="11dp">
+                        >
 
                         <ImageView
+                            android:id="@+id/add_product_icon"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:src="@drawable/add_produits_profile"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="10dp" />
+                            android:layout_marginLeft="10dp"
+                            android:layout_centerVertical="true"/>
 
                         <TextView
                             android:id="@+id/addproduct"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="50dp"
                             android:text="Ajouter produits"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="15dp"
                             android:textColor="@color/black"
-                            tools:ignore="InvalidId" />
+                            android:textSize="20dp" />
 
                         <ImageView
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/profile_retour"
-                            android:layout_marginLeft="105dp" />
-                    </LinearLayout>
+                            android:layout_marginLeft="178dp" />
+                    </RelativeLayout>
 
-                    <LinearLayout
+                    <RelativeLayout
+
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/m_40"
                         android:orientation="horizontal"
-                        android:background="@color/white"
-                        android:layout_marginBottom="15dp">
+
+                        >
 
                         <ImageView
+                            android:id="@+id/history_product_icon"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:src="@drawable/history_produits_profile"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="10dp" />
+                            android:layout_marginLeft="10dp"
+                            android:layout_centerVertical="true"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/history_product"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="50dp"
                             android:text="Historique produit"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="15dp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20dp" />
 
                         <ImageView
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/profile_retour"
-                            android:layout_marginLeft="85dp" />
-                    </LinearLayout>
+                            android:layout_marginLeft="178dp" />
+                    </RelativeLayout>
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/m_40"
                         android:orientation="horizontal"
-                        android:background="@color/white"
-                        android:layout_marginBottom="11dp">
+
+                        >
 
                         <ImageView
+                            android:id="@+id/wallet_icon"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:src="@drawable/portfeuile_produits_profile"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="10dp" />
+                            android:layout_marginLeft="10dp"
+                            android:layout_centerVertical="true"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/wallet"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="50dp"
                             android:text="Mon Portefeuille"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="15dp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20dp" />
 
                         <ImageView
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/profile_retour"
-                            android:layout_marginLeft="97dp" />
-                    </LinearLayout>
+                            android:layout_marginLeft="178dp" />
+                    </RelativeLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <RelativeLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/m_40"
                         android:orientation="horizontal"
-                        android:background="@color/white"
-                        android:layout_marginBottom="11dp">
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:attr/selectableItemBackground"
+                        >
+
 
                         <ImageView
+                            android:id="@+id/disconnet_icon"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:src="@drawable/logout_produits_profile"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="10dp" />
+                            android:layout_marginLeft="10dp"
+                            android:layout_centerVertical="true"/>
 
                         <TextView
+                            android:id="@+id/disconnet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+
+                            android:layout_centerVertical="true"
+                            android:paddingLeft="50dp"
                             android:text="Me Deconnecter"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="15dp"
-                            android:textColor="@color/black" />
-                    </LinearLayout>
+                            android:textColor="@color/black"
+                            android:textSize="20dp" />
+
+
+                    </RelativeLayout>
+
+
+
+
                 </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

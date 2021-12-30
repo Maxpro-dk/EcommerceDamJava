@@ -15,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.e_commerce.R;
+import com.example.e_commerce.activities.MainActivity;
 import com.example.e_commerce.adapter.AllProductAdapter;
 import com.example.e_commerce.databinding.AllProductFragmentBinding;
 import com.example.e_commerce.entities.Product;
@@ -58,5 +59,12 @@ public class AllProductFragment extends Fragment implements AllProductAdapter.On
         bundle.putSerializable("product", product);
         NavHostFragment.findNavController(this).navigate(R.id.detailProductFragment, bundle);
         Toast.makeText(getContext(), "Toi" + product + " |||" + position, Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void onStart() {
+        MainActivity.showBottomBar();
+        super.onStart();
+
     }
 }

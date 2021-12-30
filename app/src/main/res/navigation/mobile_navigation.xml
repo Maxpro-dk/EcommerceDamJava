@@ -13,7 +13,20 @@
     <fragment
         android:id="@+id/navigation_account"
         android:name="com.example.e_commerce.ui.account.AccountFragment"
-        tools:layout="@layout/account_fragment" />
+        tools:layout="@layout/account_fragment" >
+        <action
+            android:id="@+id/action_navigation_account_to_historique_Fragment"
+            app:destination="@id/historique_Fragment" />
+        <action
+            android:id="@+id/action_navigation_account_to_mes_favories_Fragment"
+            app:destination="@id/mes_favories_Fragment" />
+        <action
+            android:id="@+id/action_navigation_account_to_mes_produits_Fragment"
+            app:destination="@id/mes_produits_Fragment" />
+        <action
+            android:id="@+id/action_navigation_account_to_createProductFragment"
+            app:destination="@id/createProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_commande"
         android:name="com.example.e_commerce.ui.commande.CommandeFragment"
@@ -64,5 +77,15 @@
             android:id="@+id/action_mes_produits_Fragment_to_mon_produit_Fragment"
             app:destination="@id/mon_produit_Fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/historique_Fragment"
+        android:name="com.example.e_commerce.Historique_Fragment"
+        android:label="fragment_historique_"
+        tools:layout="@layout/fragment_historique_" />
+    <fragment
+        android:id="@+id/mes_favories_Fragment"
+        android:name="com.example.e_commerce.mes_favories_Fragment"
+        android:label="fragment_mes_favories_"
+        tools:layout="@layout/fragment_mes_favories_" />
 
 </navigation>

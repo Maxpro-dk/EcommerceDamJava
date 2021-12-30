@@ -9,4 +9,5 @@
     <dimen name="card_cornes">4dp</dimen>
     <dimen name="space">20dp</dimen>
     <dimen name="normal_padding">16dp</dimen>
+    <dimen name="m_40">40dp</dimen>
 </resources>

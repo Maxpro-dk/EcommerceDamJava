@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.e_commerce.R;
+import com.example.e_commerce.activities.MainActivity;
 import com.example.e_commerce.databinding.AccountFragmentBinding;
 
 public class AccountFragment extends Fragment {
@@ -31,21 +32,50 @@ public class AccountFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(AccountViewModel.class);
         binding = AccountFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        binding.addproduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "j'ai cliqué ", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(v).navigate(R.id.createProductFragment);
-            }
-        });
+
+        binding.historyProduct.setOnClickListener(toHistory);
+        binding.myProducts.setOnClickListener(toMyProducts);
+        binding.favorite.setOnClickListener(toFavorite);
+        binding.addproduct.setOnClickListener(toAddProduct);
         return root;
     }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        mViewModel = new ViewModelProvider(this).get(AccountViewModel.class);
-//        // TODO: Use the ViewModel
-//    }
 
+
+    View.OnClickListener toHistory = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            MainActivity.hideBottomBar();
+          Navigation.findNavController(v).navigate(R.id.action_navigation_account_to_historique_Fragment);
+        }
+    };
+
+    View.OnClickListener toMyProducts = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            MainActivity.hideBottomBar();
+            Navigation.findNavController(v).navigate(R.id.action_navigation_account_to_mes_produits_Fragment);
+        }
+    };
+
+    View.OnClickListener toFavorite = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            MainActivity.hideBottomBar();
+            Navigation.findNavController(v).navigate(R.id.action_navigation_account_to_mes_favories_Fragment);
+        }
+    };
+    View.OnClickListener toAddProduct = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            MainActivity.hideBottomBar();
+            Navigation.findNavController(v).navigate(R.id.action_navigation_account_to_createProductFragment);
+        }
+    };
+
+    public void onStart() {
+        MainActivity.showBottomBar();
+        super.onStart();
+
+    }
 }
