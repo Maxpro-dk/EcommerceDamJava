@@ -29,20 +29,7 @@ public class AllProductViewModel extends ViewModel {
 
     public void generate() {
         productArrayList = new ArrayList<>();
-//        db=FirebaseFirestore.getInstance();
-//        CollectionReference reference= db.collection(Product.class.getSimpleName());
-//        Query query=reference.whereEqualTo("id",reference.getId());
-//        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//              if (task.isSuccessful()){
-//                  for (QueryDocumentSnapshot snapshot: task.getResult()){
-//                     Product product= snapshot.toObject(Product.class);
-//                     productArrayList.add(product);
-//                  }
-//              }
-//            }
-//        });
+
         productArrayList.add(new Product("hgd", "alber", "hello", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
         productArrayList.add(new Product("hgd", "alber", "Albert", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
         productArrayList.add(new Product("hgd", "alber", "Moufid", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));

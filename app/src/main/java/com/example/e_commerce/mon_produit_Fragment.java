@@ -90,6 +90,12 @@ public class mon_produit_Fragment extends Fragment {
             }
         });
 
+        binding.validateProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makePrivate(v);
+            }
+        });
 
         return view;
     }
@@ -133,8 +139,8 @@ public class mon_produit_Fragment extends Fragment {
 
 
     }
-    public  void  makePrivate(Product product){
-
+    public  void  makePrivate(View v){
+        Navigation.findNavController(v).navigate(R.id.action_mon_produit_Fragment_to_mes_produits_Fragment);
     }
 
 
