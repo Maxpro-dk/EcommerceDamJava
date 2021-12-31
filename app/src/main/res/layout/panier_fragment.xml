@@ -312,6 +312,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
                         android:orientation="horizontal">
                         <Button
                             android:id="@+id/commande"
@@ -326,6 +328,21 @@
                             tools:ignore="MissingConstraints" />
                     </LinearLayout>
                 </LinearLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp">
+<!--                    <Button-->
+<!--                        android:id="@+id/commande1"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/round_button_valider"-->
+<!--                        app:backgroundTint="@color/bleue"-->
+<!--                        android:layout_marginStart="20dp"-->
+<!--                        android:layout_marginEnd="20dp"-->
+<!--                        android:text="Lancer la commande"-->
+<!--                        tools:ignore="MissingConstraints" />-->
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </ScrollView>
 
