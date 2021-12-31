@@ -63,9 +63,6 @@ public class mon_produit_Fragment extends Fragment {
         }
         handler = new Handler(Looper.getMainLooper());
     }
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -117,19 +114,12 @@ public class mon_produit_Fragment extends Fragment {
         docCategrie.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                ImgManager.loadImage(product.getImg_id(), binding.imageproduct, requireActivity());
+//                ImgManager.loadImage(product.getImg_id(), binding.imageproduct, requireActivity());
+                Glide.with(getContext()).load(product.getImg_id())
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(binding.imageproduct);
             }
         });
-
-
-
-                   
-
-
-
-
-
-
     }
 
     public  void  delete(Product product){

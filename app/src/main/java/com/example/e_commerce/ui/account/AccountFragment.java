@@ -1,5 +1,6 @@
 package com.example.e_commerce.ui.account;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.navigation.Navigation;
 import com.example.e_commerce.R;
 import com.example.e_commerce.activities.MainActivity;
 import com.example.e_commerce.databinding.AccountFragmentBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AccountFragment extends Fragment {
 
@@ -37,11 +39,24 @@ public class AccountFragment extends Fragment {
         binding.myProducts.setOnClickListener(toMyProducts);
         binding.favorite.setOnClickListener(toFavorite);
         binding.addproduct.setOnClickListener(toAddProduct);
+        binding.disconnet.setOnClickListener(tologout);
+        binding.wallet.setOnClickListener(towallet);
         return root;
     }
 
-
-
+    View.OnClickListener towallet=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getContext(), "Clique now", Toast.LENGTH_SHORT).show();
+        }
+    };
+    View.OnClickListener tologout=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getActivity(),MainActivity.class));
+        }
+    };
     View.OnClickListener toHistory = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

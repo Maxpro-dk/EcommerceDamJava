@@ -30,11 +30,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:layout_above="@id/button_layout"
             >
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,8 +49,8 @@
                     android:id="@+id/imageproduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
                     android:layout_marginTop="@dimen/small_padding"
+                    android:adjustViewBounds="true"
                     app:srcCompat="@drawable/holder2" />
 
                 <LinearLayout
@@ -74,14 +77,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:fontFamily="sans-serif"
                                 android:paddingStart="8dp"
                                 android:text="Booba Homme"
-                                android:fontFamily="sans-serif"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
                                 android:textSize="24sp"
                                 android:textStyle="bold"
-                                android:textColor="@color/black"
-                                android:textAlignment="center"
-
                                 tools:ignore="RtlCompat" />
 
                             <TextView
@@ -92,10 +94,10 @@
                                 android:gravity="center_vertical"
                                 android:paddingStart="8dp"
                                 android:text="5000Fcfa"
+                                android:textAlignment="center"
+                                android:textColor="#373b54"
                                 android:textSize="18dp"
                                 android:textStyle="bold"
-                                android:textColor="#373b54"
-                                android:textAlignment="center"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
 
@@ -108,9 +110,10 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Bilan de vente du produit"
-                        android:textSize="18dp"
                         android:textColor="@color/bleue_foncer"
+                        android:textSize="18dp"
                         tools:ignore="RtlCompat" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -120,8 +123,6 @@
                             android:layout_height="wrap_content"
                             android:columnCount="2"
                             android:rowCount="3">
-
-
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -150,14 +151,14 @@
                         </RelativeLayout>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
+                            android:layout_height="wrap_content">
 
 
                             <TextView
@@ -175,19 +176,20 @@
                                 android:id="@+id/sell_quantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:layout_alignParentRight="true"
+                                android:layout_weight="1"
+                                android:background="@color/white"
                                 android:text="29"
+                                android:textColor="#373b54"
                                 android:textSize="18dp"
                                 android:textStyle="bold"
-                                android:background="@color/white"
-                                android:textColor="#373b54"
                                 tools:ignore="RtlCompat" />
 
 
                         </RelativeLayout>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -214,13 +216,13 @@
                                 android:id="@+id/available_quantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:layout_alignParentRight="true"
+                                android:layout_weight="1"
+                                android:background="@color/white"
                                 android:text="21"
+                                android:textColor="#373b54"
                                 android:textSize="18dp"
                                 android:textStyle="bold"
-                                android:background="@color/white"
-                                android:textColor="#373b54"
                                 tools:ignore="RtlCompat" />
 
 
@@ -233,25 +235,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        android:fontFamily="serif"
                         android:text="Description du produit"
                         android:textAlignment="center"
                         android:textColor="@color/bleue_foncer"
-                        android:fontFamily="serif"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="serif"
                         android:text="Toujours frais pour les occasions de fete en famille, Quatre couleurs disponible..."
                         android:textColor="@color/black"
-                        android:fontFamily="serif"
                         android:textSize="17dp" />
 
                 </LinearLayout>
-
-
-
 
 
             </LinearLayout>
@@ -268,49 +267,44 @@
             android:textColor="@color/rouge"
             android:visibility="gone"/>
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/button_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:gravity="center"
             android:layout_marginBottom="@dimen/small_padding"
-            android:orientation="horizontal"
-
-            >
-
-            <Button
-                android:id="@+id/validate_product"
-                android:layout_width="123dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/round_button_valid"
-                android:text="Valider"
-                app:backgroundTint="@color/vert" />
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/modify_product"
-                android:layout_width="123dp"
+                android:layout_width="115dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="2dp"
                 android:background="@drawable/round_button_valider"
                 android:text="Modifier"
                 app:backgroundTint="@color/bleue" />
 
             <Button
-                android:id="@+id/delete_product"
-                android:layout_width="123dp"
+                android:id="@+id/validate_product"
+                android:layout_width="115dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="4dp"
-                android:text="Supprimer"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/round_button_valid"
+                android:text="Valider"
+                app:backgroundTint="@color/vert" />
 
-                android:layout_marginEnd="4dp"
+            <Button
+                android:id="@+id/delete_product"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="15dp"
                 android:background="@drawable/round_button_dlete"
+                android:text="Supprimer"
                 app:backgroundTint="@color/rouge" />
-        </RelativeLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 

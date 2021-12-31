@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment implements TabLayout.OnTabSelectedLis
             SliderAdapter sliderAdapter = new SliderAdapter(publicities, getContext());
             binding.imageSlide.setSliderAdapter(sliderAdapter);
             binding.imageSlide.setIndicatorAnimation(IndicatorAnimationType.SLIDE);
-            binding.imageSlide.setSliderTransformAnimation(SliderAnimations.GATETRANSFORMATION);
+            binding.imageSlide.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
             binding.imageSlide.startAutoCycle();
         }
     };
