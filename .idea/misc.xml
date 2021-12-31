@@ -58,6 +58,7 @@
         <entry key="app/src/main/res/layout/fragment_show_detail_.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/frame_textview.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/my_category_fragment.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/my_category_items.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/my_home.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/my_new_product_fragment.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/my_products_fragment.xml" value="0.19583333333333333" />
@@ -72,6 +73,7 @@
         <entry key="app/src/main/res/menu/appbar_top.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/menu/like.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/menu/rech.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/placeholder.xml" value="0.12083333333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/placeholder_round.xml" value="0.12083333333333333" />

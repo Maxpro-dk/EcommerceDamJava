@@ -50,21 +50,6 @@ public class MyProductsViewModel extends ViewModel {
             }
         });
 
-
-//        productArrayList.add(new Product("hgd", "alber", "hello", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "Albert", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "Moufid", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "Ange", "je ne sais quoi", 2000, 548782, null, "ordinateur", "banner4"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "hp note book", "vraiment hein la vie qu'on mène", 4000, 58572, null, "ordinateur probook", "banner4"));
-//        productArrayList.add(new Product("hgd", "alber", "food qu'on mange", "vraiment hein la vie qu'on mène", 4000, 58572, null, "ordinateur probook", "banner5"));
-//        productArrayList.add(new Product("hgd", "alber", "habits", "vraiment hein la vie qu'on mène", 4000, 58572, null, "ordinateur probook", "fem3"));
-//
-
     }
 
 

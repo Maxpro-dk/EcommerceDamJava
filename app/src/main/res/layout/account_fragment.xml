@@ -148,7 +148,7 @@
                             android:layout_centerVertical="true"/>
 
                         <TextView
-                            android:id="@+id/favorite"
+                            android:id="@+id/textfavorite"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="?android:attr/selectableItemBackground"

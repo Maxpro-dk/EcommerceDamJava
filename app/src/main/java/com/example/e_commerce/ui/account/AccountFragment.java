@@ -37,7 +37,7 @@ public class AccountFragment extends Fragment {
 
         binding.historyProduct.setOnClickListener(toHistory);
         binding.myProducts.setOnClickListener(toMyProducts);
-        binding.favorite.setOnClickListener(toFavorite);
+        binding.textfavorite.setOnClickListener(toFavorite);
         binding.addproduct.setOnClickListener(toAddProduct);
         binding.disconnet.setOnClickListener(tologout);
         binding.wallet.setOnClickListener(towallet);
