@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.e_commerce.entities.Category;
 import com.example.e_commerce.entities.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,18 +25,24 @@ public class AllProductViewModel extends ViewModel {
     ArrayList<Product> productArrayList;
     private FirebaseFirestore db;
     private FirebaseStorage storage;
+    CollectionReference referenceProduct;
+    private String tab="tous";
+    public static Category category=null;
+    Query query;
+
 
     public AllProductViewModel() {
         liveData = new MutableLiveData<>();
-        generate();
+        db=FirebaseFirestore.getInstance();
+        referenceProduct= db.collection(Product.class.getSimpleName());
+
     }
 
     public void generate() {
         productArrayList = new ArrayList<>();
-        db=FirebaseFirestore.getInstance();
-        CollectionReference referenceProduct= db.collection(Product.class.getSimpleName());
-        Query queryproduct=referenceProduct.whereEqualTo("user_id","bHwzDTxZGxe5Tob8z1irDI65w7j1");
-        queryproduct.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
               if (task.isSuccessful()){
@@ -47,23 +54,27 @@ public class AllProductViewModel extends ViewModel {
               }
             }
         });
-//        productArrayList.add(new Product("hgd", "alber", "hello", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "Albert", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "Moufid", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "Ange", "je ne sais quoi", 2000, 548782, null, "ordinateur", "banner4"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "pc Hp-max pro", "je ne sais quoi", 2000, 548782, null, "ordinateur", "chemh2"));
-//        productArrayList.add(new Product("hgd", "alber", "hp note book", "vraiment hein la vie qu'on mène", 4000, 58572, null, "ordinateur probook", "banner4"));
-//        productArrayList.add(new Product("hgd", "alber", "food qu'on mange", "vraiment hein la vie qu'on mène", 4000, 58572, null, "ordinateur probook", "banner5"));
-//        productArrayList.add(new Product("hgd", "alber", "habits", "vraiment hein la vie qu'on mène", 4000, 58572, null, "ordinateur probook", "fem3"));
-//        liveData.setValue(productArrayList);
+
     }
 
 
     public MutableLiveData<ArrayList<Product>> getLiveData() {
         return liveData;
     }
+
+    public void allQuery(){
+        if(category==null)
+            query = referenceProduct.orderBy("id");
+        else query = referenceProduct.whereEqualTo("category_id",category.getId()).orderBy("id");
+
+    }
+
+    public void newQuery(){
+        if(category==null)
+            query = referenceProduct.orderBy("timestamp", Query.Direction.DESCENDING);
+        else query = referenceProduct.whereEqualTo("category_id",category.getId()).orderBy("timestamp", Query.Direction.DESCENDING);
+
+
+    }
+
 }

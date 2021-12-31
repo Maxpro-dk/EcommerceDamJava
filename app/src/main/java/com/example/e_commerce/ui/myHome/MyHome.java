@@ -48,6 +48,12 @@ public class MyHome extends Fragment implements TabLayout.OnTabSelectedListener 
 
         binding.tablayout.setSelectedTabIndicator(null);
         binding.tablayout.addOnTabSelectedListener(this);
+        binding.toobar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
 
 
         return view;

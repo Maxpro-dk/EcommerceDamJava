@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.e_commerce.entities.Category;
 import com.example.e_commerce.entities.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -12,6 +13,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 
@@ -23,20 +25,30 @@ public class MyProductsViewModel extends ViewModel {
     ArrayList<Product> productArrayList;
     private FirebaseFirestore db;
     private FirebaseStorage storage;
+    private Boolean isScrolled= false;
+    DocumentSnapshot lastVisible ;
+    CollectionReference docPrduct;
+    Query query ;
+    public static Category category=null;
 
     public MyProductsViewModel() {
         liveData = new MutableLiveData<>();
         db = FirebaseFirestore.getInstance();
-        generate();
+        docPrduct = db.collection(Product.class.getSimpleName());
+
 
     }
 
     public void generate() {
         productArrayList = new ArrayList<>();
-        CollectionReference docPrduct = db.collection(Product.class.getSimpleName());
-        docPrduct.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+
+                query
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                lastVisible=queryDocumentSnapshots.getDocuments()
+                        .get(queryDocumentSnapshots.size() -1);
+
                 List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                 for (DocumentSnapshot d: list){
                     productArrayList.add(d.toObject(Product.class));
@@ -47,14 +59,79 @@ public class MyProductsViewModel extends ViewModel {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 liveData.setValue(productArrayList);
+
+
             }
         });
 
     }
 
+    public Boolean getScrolled() {
+        return isScrolled;
+    }
+
+    public void setScrolled(Boolean scrolled) {
+        isScrolled = scrolled;
+    }
+
+    public void update() {
+     if (lastVisible!=null) {
+
+                    query
+                    .limit(15)
+                 .startAfter(lastVisible)
+                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+             @Override
+             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                 int n=queryDocumentSnapshots.size() -1;
+                 if (n>0) {
+                     lastVisible = queryDocumentSnapshots.getDocuments()
+                             .get(n);
+                 }
+
+                 List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                 for (DocumentSnapshot d : list) {
+                     productArrayList.add(d.toObject(Product.class));
+                 }
+
+             }
+         }).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+             @Override
+             public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                 setScrolled(false);
+             }
+         });
+     }
+
+
+
+
+    }
+
+
+
+
+
 
     public MutableLiveData<ArrayList<Product>> getLiveData() {
         return liveData;
     }
+
+    public void allQuery(){
+        if(category==null)
+        query = docPrduct.whereEqualTo("user_id","bHwzDTxZGxe5Tob8z1irDI65w7j1").orderBy("id");
+        else query = docPrduct.whereEqualTo("user_id","bHwzDTxZGxe5Tob8z1irDI65w7j1").whereEqualTo("category_id",category.getId()).orderBy("id");
+
+    }
+
+    public void newQuery(){
+        if(category==null)
+            query = docPrduct.whereEqualTo("user_id","bHwzDTxZGxe5Tob8z1irDI65w7j1").orderBy("timestamp", Query.Direction.DESCENDING);
+        else query = docPrduct.whereEqualTo("user_id","bHwzDTxZGxe5Tob8z1irDI65w7j1").whereEqualTo("category_id",category.getId()).orderBy("timestamp", Query.Direction.DESCENDING);
+
+
+    }
+
+
 
 }
