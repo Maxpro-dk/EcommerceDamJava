@@ -58,9 +58,6 @@ public class PanierFragment extends Fragment {
             }
         });
         binding.recyclerviewpanier.setAdapter(panierAdapter);
-        if (panier.getListCart().size()>=5){
-            binding.toobar.setVisibility(View.GONE);
-        }
     }
 
 
