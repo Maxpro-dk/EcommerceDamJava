@@ -23,7 +23,7 @@ public class PageAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 1:
-                return new NewProductFragment();
+                return new AllProductFragment("new");
             case 2:
                 return new CategoryFragment();
 

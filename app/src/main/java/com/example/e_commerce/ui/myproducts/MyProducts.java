@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,16 +32,58 @@ public class MyProducts extends Fragment implements MyProductsAdapter.OnProductL
     private MyProductsViewModel mViewModel;
     private MyProductsFragmentBinding binding;
     MyProductsAdapter.OnProductListener productListener= this;
+    MyProductsAdapter adapter;
+    private String tab="tous";
+
+    public MyProducts(){
+
+    }
+    public MyProducts(String tab){
+        this.tab=tab;
+    }
+
+
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
         mViewModel = new ViewModelProvider(this).get(MyProductsViewModel.class);
+        if (tab=="new"){
+            mViewModel.newQuery();
+        }else {
+            mViewModel.allQuery();
+        }
+        mViewModel.generate();
         binding = MyProductsFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         mViewModel.getLiveData().observe(getViewLifecycleOwner(), productListObserve);
+        binding.recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                if (!mViewModel.getScrolled()) {
+                    int n = mViewModel.getLiveData().getValue().size();
+                    if (linearLayoutManager != null && linearLayoutManager.findLastCompletelyVisibleItemPosition() == n-1) {
+                        mViewModel.update();
+                        mViewModel.setScrolled(true);
+                    }
+                }
+
+
+            }
+        });
+
         return root;
+
 
     }
 
@@ -49,7 +92,7 @@ public class MyProducts extends Fragment implements MyProductsAdapter.OnProductL
     Observer<ArrayList<Product>> productListObserve = new Observer<ArrayList<Product>>() {
         @Override
         public void onChanged(ArrayList<Product> products) {
-            MyProductsAdapter adapter = new MyProductsAdapter(products, getContext(), productListener);
+             adapter = new MyProductsAdapter(products, getContext(), productListener);
             binding.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
             binding.recyclerview.setAdapter(adapter);
         }
