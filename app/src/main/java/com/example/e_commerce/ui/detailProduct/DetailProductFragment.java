@@ -1,5 +1,6 @@
 package com.example.e_commerce.ui.detailProduct;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import androidx.lifecycle.ViewModelProvider;
@@ -30,6 +31,7 @@ import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.DetailProductFragmentBinding;
 import com.example.e_commerce.entities.Basket;
 import com.example.e_commerce.entities.Basket_line;
+import com.example.e_commerce.entities.Preference;
 import com.example.e_commerce.entities.Product;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -48,6 +50,7 @@ public class DetailProductFragment extends Fragment {
     private FirebaseAuth auth;
     private Basket_line basket_line;
     private Basket basket;
+    private Preference preference;
     private TextView textproductselect,textachat,textdisponible,textrestant;
     public static DetailProductFragment newInstance() {
         return new DetailProductFragment();
@@ -61,7 +64,14 @@ public class DetailProductFragment extends Fragment {
         View view=binding.getRoot();
         db=FirebaseFirestore.getInstance();
         panier=new ControllerPanier(getContext());
+        favorite();
         getData();
+        binding.toobar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
         return view;
     }
 
@@ -113,8 +123,40 @@ public class DetailProductFragment extends Fragment {
             }
         });
     }
+    public void favorite(){
+        //binding.toobar.inflateMenu(R.menu.like);
+        product =(Product)getArguments().getSerializable("product");
+        binding.toobar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.favorite:
+                        DocumentReference documentPreference=db.collection(Preference.class.getSimpleName()).document();
+                        preference=new Preference();
+                        preference.setId(documentPreference.getId());
+                        preference.setProduct_id(product.getId());
+                        preference.setStatus(true);
+                        documentPreference.set(preference).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(getContext(), "Product ajouter en preference", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        break;
 
-    public Boolean  cardProduct(DocumentReference d,Object o){
+                }
+                return true;
+            }
+        });
+    }
+
+
+    public Boolean  cardProduct(DocumentReference d, Object o){
         return d.set(o).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
