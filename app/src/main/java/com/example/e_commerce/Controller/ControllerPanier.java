@@ -3,21 +3,30 @@ package com.example.e_commerce.Controller;
 import android.content.Context;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.e_commerce.adapter.ChangeNumberItemsListener;
+import com.example.e_commerce.entities.Basket;
+import com.example.e_commerce.entities.Basket_line;
 import com.example.e_commerce.entities.Product;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
 public class ControllerPanier {
     private Context context;
     private TinyDB tinyDB;
-
     public ControllerPanier(Context context) {
         this.context = context;
         this.tinyDB = new TinyDB(context);
     }
 
     public void insertFood(Product item) {
+
         ArrayList<Product> listProduct = getListCart();
         boolean existAlready = false;
         int n = 0;
@@ -31,7 +40,6 @@ public class ControllerPanier {
 
         if (existAlready) {
             listProduct.get(n).setNumberInCart(item.getNumberInCart());
-            Toast.makeText(context, ""+item.getNumberInCart(), Toast.LENGTH_SHORT).show();
         } else {
             listProduct.add(item);
         }

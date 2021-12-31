@@ -7,17 +7,17 @@ public class Basket_line implements Serializable {
     private String id;
     private String bask_id;
     private String product_id;
-    private double orderQuanttity;
+//    private double orderQuanttity;
     private boolean status = false;
 
     public Basket_line() {
     }
 
-    public Basket_line(String id, String bask_id, String product_id, double orderQuanttity) {
+    public Basket_line(String id, String bask_id, String product_id) {
         this.id = id;
         this.bask_id = bask_id;
         this.product_id = product_id;
-        this.orderQuanttity = orderQuanttity;
+//        this.orderQuanttity = orderQuanttity;
     }
 
     public String getId() {
@@ -44,13 +44,13 @@ public class Basket_line implements Serializable {
         this.product_id = product_id;
     }
 
-    public double getOrderQuanttity() {
-        return orderQuanttity;
-    }
-
-    public void setOrderQuanttity(double orderQuanttity) {
-        this.orderQuanttity = orderQuanttity;
-    }
+//    public double getOrderQuanttity() {
+//        return orderQuanttity;
+//    }
+//
+//    public void setOrderQuanttity(double orderQuanttity) {
+//        this.orderQuanttity = orderQuanttity;
+//    }
 
     public boolean isStatus() {
         return status;
@@ -66,7 +66,6 @@ public class Basket_line implements Serializable {
                 "id='" + id + '\'' +
                 ", bask_id='" + bask_id + '\'' +
                 ", product_id='" + product_id + '\'' +
-                ", orderQuanttity=" + orderQuanttity +
                 ", status=" + status +
                 '}';
     }

@@ -64,8 +64,6 @@ public class MyProductsViewModel extends ViewModel {
             }
         });
 
-
-
     }
 
     public Boolean getScrolled() {

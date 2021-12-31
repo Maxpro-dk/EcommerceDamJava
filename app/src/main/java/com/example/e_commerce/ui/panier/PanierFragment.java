@@ -33,7 +33,6 @@ public class PanierFragment extends Fragment {
     private PanierFragmentBinding binding;
     private PanierAdapter panierAdapter;
     private ControllerPanier panier;
-    private TextView textproductselect,textachat,textdisponible,textrestant;
     public static PanierFragment newInstance() {
         return new PanierFragment();
     }
@@ -45,9 +44,15 @@ public class PanierFragment extends Fragment {
         View root=binding.getRoot();
          panier=new ControllerPanier(getContext());
          initList();
+         binding.commande.setOnClickListener(tocommande);
         return root;
     }
-
+   View.OnClickListener tocommande=new View.OnClickListener() {
+       @Override
+       public void onClick(View v) {
+           Toast.makeText(getContext(), "Commande en cours", Toast.LENGTH_SHORT).show();
+       }
+   };
     public void initList(){
         binding.recyclerviewpanier.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         Toast.makeText(getActivity(), ""+panier.getListCart().size(), Toast.LENGTH_SHORT).show();
@@ -60,13 +65,6 @@ public class PanierFragment extends Fragment {
         binding.recyclerviewpanier.setAdapter(panierAdapter);
     }
 
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        mViewModel = new ViewModelProvider(this).get(PanierViewModel.class);
-//        // TODO: Use the ViewModel
-//    }
 
     public void calculate(){
         double achat=Math.round(panier.getTotalPrice());
