@@ -82,6 +82,7 @@ public class PanierFragment extends Fragment {
 
     public void onStart() {
         MainActivity.showBottomBar();
+        calculate();
         super.onStart();
 
     }

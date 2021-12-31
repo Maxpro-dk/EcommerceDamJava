@@ -1,23 +1,29 @@
 package com.example.e_commerce.ui.myproducts;
 
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.example.e_commerce.R;
+import com.example.e_commerce.adapter.AllProductAdapter;
 import com.example.e_commerce.adapter.MyProductsAdapter;
+import com.example.e_commerce.databinding.AllProductFragmentBinding;
 import com.example.e_commerce.databinding.MyProductsFragmentBinding;
 import com.example.e_commerce.entities.Product;
+import com.example.e_commerce.ui.allproduct.AllProductViewModel;
 
 import java.util.ArrayList;
 
@@ -69,9 +75,6 @@ public class MyProducts extends Fragment implements MyProductsAdapter.OnProductL
                     if (linearLayoutManager != null && linearLayoutManager.findLastCompletelyVisibleItemPosition() == n-1) {
                         mViewModel.update();
                         mViewModel.setScrolled(true);
-
-
-
                     }
                 }
 

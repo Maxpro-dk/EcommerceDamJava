@@ -43,7 +43,6 @@ public class MyProductsViewModel extends ViewModel {
         productArrayList = new ArrayList<>();
 
                 query
-                .limit(15)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -60,7 +59,7 @@ public class MyProductsViewModel extends ViewModel {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 liveData.setValue(productArrayList);
-                setScrolled(false);
+
 
             }
         });

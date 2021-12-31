@@ -93,7 +93,10 @@ public class MyCategory extends Fragment implements MyCategoryAdapter.OnCategory
 
     @Override
     public void onCategoryClick(int position, View view) {
-        MyProductsViewModel.category=mViewModel.getLiveData().getValue().get(position);
+        Category category=mViewModel.getLiveData().getValue().get(position);
+        if (category.getId()=="")MyProductsViewModel.category=null;
+        else MyProductsViewModel.category=category;
+
         Navigation.findNavController(view).navigate(R.id.mes_produits_Fragment);
     }
 

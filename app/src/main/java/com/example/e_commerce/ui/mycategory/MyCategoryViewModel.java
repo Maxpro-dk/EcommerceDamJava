@@ -39,6 +39,8 @@ public class MyCategoryViewModel extends ViewModel {
 
     public void generate() {
         categoryArrayList = new ArrayList<>();
+        Category category = new Category("","Tous mes produits");
+        categoryArrayList.add(category);
 
                  query
                 .limit(11)
@@ -78,7 +80,7 @@ public class MyCategoryViewModel extends ViewModel {
     public void update() {
         if (lastVisible!=null) {
 
-            query
+                     query
                     .startAfter(lastVisible)
                     .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override

@@ -28,15 +28,28 @@ public class AllProductFragment extends Fragment implements AllProductAdapter.On
     private AllProductViewModel mViewModel;
     private AllProductFragmentBinding binding;
     private AllProductAdapter.OnProductClickListener listener = this::OnProductClick;
+    private String tab ="tous";
+
+    public AllProductFragment() {
+    }
+
+    public AllProductFragment(String tab) {
+        this.tab = tab;
+    }
 
     public static AllProductFragment newInstance() {
         return new AllProductFragment();
     }
 
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mViewModel = new ViewModelProvider(this).get(AllProductViewModel.class);
+        if (tab=="tous"){
+            mViewModel.allQuery();
+        }else mViewModel.newQuery();
+        mViewModel.generate();
         binding = AllProductFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         mViewModel.getLiveData().observe(getViewLifecycleOwner(), productListObserve);
