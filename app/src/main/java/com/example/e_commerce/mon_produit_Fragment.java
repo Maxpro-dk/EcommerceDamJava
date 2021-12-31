@@ -1,6 +1,7 @@
 package com.example.e_commerce;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -73,6 +74,7 @@ public class mon_produit_Fragment extends Fragment {
         storage= FirebaseStorage.getInstance();
         initProduct();
 
+
         binding.toobar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,12 +102,14 @@ public class mon_produit_Fragment extends Fragment {
 
 
     private void initProduct(){
+        if (product.isStatus())  binding.validateProduct.setText("MASQUER");
         binding.name.setText(product.getName());
         binding.description.setText(product.getDescription());
         binding.price.setText(String.format("%,.0f",product.getPrice())+" Fcfa");
         binding.totalQuantity.setText( String.format("%,.0f",product.getQuantity()));
         binding.sellQuantity.setText(String.format("%,.0f",product.getQunatity_sell()));
         binding.availableQuantity.setText(String.format("%,.0f",product.getAvailable()));
+
         DocumentReference docCategrie = db.collection(Category.class.getSimpleName()).document(product.getCategory_id());
         docCategrie.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -123,6 +127,7 @@ public class mon_produit_Fragment extends Fragment {
 
     }
     public  void  modify(Product product,View view){
+
         Bundle bundle = new Bundle();
         bundle.putSerializable("product",product);
         Navigation.findNavController(view).navigate(R.id.action_mon_produit_Fragment_to_createProductFragment,bundle);
@@ -130,7 +135,27 @@ public class mon_produit_Fragment extends Fragment {
 
     }
     public  void  makePrivate(View v){
-        Navigation.findNavController(v).navigate(R.id.action_mon_produit_Fragment_to_mes_produits_Fragment);
+        ProgressDialog p = new ProgressDialog(getContext());
+        p.create();
+        p.show();
+        product.setStatus(!product.isStatus());
+
+        db.collection(Product.class.getSimpleName()).document(product.getId()).set(product).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+               if (product.isStatus()){
+                   Navigation.findNavController(v).navigate(R.id.action_mon_produit_Fragment_to_mes_produits_Fragment);
+               }else binding.validateProduct.setText("PUBLIER");
+               p.dismiss();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+              p.dismiss();
+            }
+        });
+
     }
 
 
