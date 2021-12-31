@@ -59,10 +59,13 @@ public class DetailProductFragment extends Fragment {
 
     public void getData(){
         product =(Product)getArguments().getSerializable("product");
-        int drawableResourceId = this.getResources().getIdentifier(product.getImg_id(), "drawable", getContext().getPackageName());
-        Glide.with(this)
-                .load(drawableResourceId)
+        Glide.with(getContext()).load(product.getImg_id())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(binding.imageproduct);
+//        int drawableResourceId = this.getResources().getIdentifier(product.getImg_id(), "drawable", getContext().getPackageName());
+//        Glide.with(this)
+//                .load(drawableResourceId)
+//                .into(binding.imageproduct);
         Toast.makeText(getContext(), ""+product.getImg_id(), Toast.LENGTH_SHORT).show();
 //        Glide.with(getContext()).asBitmap().load(product.getImg_id())
 //                .diskCacheStrategy(DiskCacheStrategy.ALL).into(new CustomTarget<Bitmap>() {
