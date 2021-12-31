@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.e_commerce.R;
 import com.example.e_commerce.entities.Image;
 import com.example.e_commerce.entities.Product;
@@ -52,15 +54,16 @@ public class MyProductsAdapter extends RecyclerView.Adapter<MyProductsAdapter.Vi
         viewHolder.quantity.setText(product.getAvailable()>1?str1 +" disponibles":str1 +" disponible");
         viewHolder.sell.setText(product.getQunatity_sell()>1?str2+" ventes":str2+" vente");
         viewHolder.price.setText(String.format("%,.0f",product.getPrice())+" Fcfa");
-        FirebaseFirestore.getInstance().collection(Image.class.getSimpleName()).whereEqualTo("productId",product.getId()).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        ImgManager.loadImage(product.getImg_id(),holder.imageView,context);
-                    }
-                });
-
-
+        Glide.with(context).load(product.getImg_id())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.imageView);
+//        FirebaseFirestore.getInstance().collection(Image.class.getSimpleName()).whereEqualTo("productId",product.getId()).get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        ImgManager.loadImage(product.getImg_id(),holder.imageView,context);
+//                    }
+//                });
 
     }
 

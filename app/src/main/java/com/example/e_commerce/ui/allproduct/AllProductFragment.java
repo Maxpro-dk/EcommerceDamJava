@@ -19,6 +19,7 @@ import com.example.e_commerce.activities.MainActivity;
 import com.example.e_commerce.adapter.AllProductAdapter;
 import com.example.e_commerce.databinding.AllProductFragmentBinding;
 import com.example.e_commerce.entities.Product;
+import com.example.e_commerce.utility.ImgManager;
 
 import java.util.ArrayList;
 

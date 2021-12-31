@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.e_commerce.R;
 import com.example.e_commerce.entities.Product;
 
@@ -51,12 +52,15 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Vi
 //
 //            }
 //        });
-        int drawableReourceId = holder.itemView.getContext().getResources()
-                .getIdentifier(product.getImg_id(), "drawable",
-                        holder.itemView.getContext().getPackageName());
-
-        Glide.with(holder.itemView.getContext())
-                .load(drawableReourceId)
+//        int drawableReourceId = holder.itemView.getContext().getResources()
+//                .getIdentifier(product.getImg_id(), "drawable",
+//                        holder.itemView.getContext().getPackageName());
+//
+//        Glide.with(holder.itemView.getContext())
+//                .load(drawableReourceId)
+//                .into(holder.imageProduct);
+        Glide.with(context).load(product.getImg_id())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageProduct);
         holder.nameProduct.setText(product.getName());
         holder.priceProduct.setText(String.valueOf(product.getPrice()));

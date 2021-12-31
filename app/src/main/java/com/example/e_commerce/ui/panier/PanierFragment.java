@@ -44,18 +44,24 @@ public class PanierFragment extends Fragment {
         binding=PanierFragmentBinding.inflate(inflater,container,false);
         View root=binding.getRoot();
          panier=new ControllerPanier(getContext());
-         binding.recyclerviewpanier.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-         Toast.makeText(getActivity(), ""+panier.getListCart(), Toast.LENGTH_SHORT).show();
-         panierAdapter= new PanierAdapter(panier.getListCart(), getContext(), new ChangeNumberItemsListener() {
-             @Override
-             public void changed() {
-                 calculate();
-             }
-         });
-         binding.recyclerviewpanier.setAdapter(panierAdapter);
+         initList();
         return root;
     }
 
+    public void initList(){
+        binding.recyclerviewpanier.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+        Toast.makeText(getActivity(), ""+panier.getListCart().size(), Toast.LENGTH_SHORT).show();
+        panierAdapter= new PanierAdapter(panier.getListCart(), getContext(), new ChangeNumberItemsListener() {
+            @Override
+            public void changed() {
+                calculate();
+            }
+        });
+        binding.recyclerviewpanier.setAdapter(panierAdapter);
+        if (panier.getListCart().size()>=5){
+            binding.toobar.setVisibility(View.GONE);
+        }
+    }
 
 
 //    @Override
@@ -72,7 +78,7 @@ public class PanierFragment extends Fragment {
         binding.totatproduct.setText(String.valueOf(panier.getListCart().size()));
         binding.deliveryTxt.setText(String.valueOf(achat));
         binding.taxTxt.setText(String.valueOf(montantdisponible));
-        binding.totalrestant.setText(String.valueOf(montanatrestant));
+//        binding.totalrestant.setText(String.valueOf(montanatrestant));
         Toast.makeText(getContext(), "Calcul effectué", Toast.LENGTH_SHORT).show();
     }
 

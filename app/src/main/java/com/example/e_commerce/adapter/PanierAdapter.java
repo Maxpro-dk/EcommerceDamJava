@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.e_commerce.Controller.ControllerPanier;
 import com.example.e_commerce.R;
 import com.example.e_commerce.entities.Basket_line;
@@ -21,11 +22,13 @@ import java.util.ArrayList;
 public class PanierAdapter extends RecyclerView.Adapter<PanierAdapter.Viewholder> {
     ArrayList<Basket_line> basket_lines;
     ArrayList<Product> products;
+    private Context context;
     private ControllerPanier panier;
     ChangeNumberItemsListener changeNumberItemsListener;
 
     public PanierAdapter(ArrayList<Product> products,Context context ,ChangeNumberItemsListener changeNumberItemsListener) {
         this.products = products;
+        this.context=context;
         panier=new ControllerPanier(context);
         this.changeNumberItemsListener = changeNumberItemsListener;
 
@@ -59,13 +62,16 @@ public class PanierAdapter extends RecyclerView.Adapter<PanierAdapter.Viewholder
 //
 //            }
 //        });
-        int drawableReourceId = holder.itemView.getContext().getResources()
-                .getIdentifier(product.getImg_id(), "drawable",
-                        holder.itemView.getContext().getPackageName());
-
-        Glide.with(holder.itemView.getContext())
-                .load(drawableReourceId)
+        Glide.with(context).load(product.getImg_id())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imagePic);
+//        int drawableReourceId = holder.itemView.getContext().getResources()
+//                .getIdentifier(product.getImg_id(), "drawable",
+//                        holder.itemView.getContext().getPackageName());
+//
+//        Glide.with(holder.itemView.getContext())
+//                .load(drawableReourceId)
+//                .into(holder.imagePic);
 
         holder.textMoins.setOnClickListener(v->panier.minusNumberProduct(products,position,()->{
             notifyDataSetChanged();

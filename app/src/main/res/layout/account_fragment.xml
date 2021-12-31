@@ -286,9 +286,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/m_40"
-                        android:orientation="horizontal"
-
-                        >
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/wallet_icon"
@@ -343,7 +341,6 @@
                             android:id="@+id/disconnet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:layout_centerVertical="true"
                             android:paddingLeft="50dp"
                             android:text="Me Deconnecter"
