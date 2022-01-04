@@ -9,6 +9,7 @@ import com.example.e_commerce.entities.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,6 +26,7 @@ public class MyProductsViewModel extends ViewModel {
     ArrayList<Product> productArrayList;
     private FirebaseFirestore db;
     private FirebaseStorage storage;
+    private FirebaseAuth auth;
     private Boolean isScrolled= false;
     DocumentSnapshot lastVisible ;
     CollectionReference docPrduct;
@@ -42,8 +44,7 @@ public class MyProductsViewModel extends ViewModel {
     public void generate() {
         productArrayList = new ArrayList<>();
 
-                query
-                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 lastVisible=queryDocumentSnapshots.getDocuments()
@@ -118,16 +119,17 @@ public class MyProductsViewModel extends ViewModel {
     }
 
     public void allQuery(){
+
         if(category==null)
-        query = docPrduct.whereEqualTo("user_id","bHwzDTxZGxe5Tob8z1irDI65w7j1").orderBy("id");
-        else query = docPrduct.whereEqualTo("user_id","bHwzDTxZGxe5Tob8z1irDI65w7j1").whereEqualTo("category_id",category.getId()).orderBy("id");
+        query = docPrduct.whereEqualTo("user_id",FirebaseAuth.getInstance().getCurrentUser().getUid()).orderBy("id");
+        else query = docPrduct.whereEqualTo("user_id",FirebaseAuth.getInstance().getCurrentUser().getUid()).whereEqualTo("category_id",category.getId()).orderBy("id");
 
     }
 
     public void newQuery(){
         if(category==null)
-            query = docPrduct.whereEqualTo("user_id","bHwzDTxZGxe5Tob8z1irDI65w7j1").orderBy("timestamp", Query.Direction.DESCENDING);
-        else query = docPrduct.whereEqualTo("user_id","bHwzDTxZGxe5Tob8z1irDI65w7j1").whereEqualTo("category_id",category.getId()).orderBy("timestamp", Query.Direction.DESCENDING);
+            query = docPrduct.whereEqualTo("user_id",FirebaseAuth.getInstance().getCurrentUser().getUid()).orderBy("timestamp", Query.Direction.DESCENDING);
+        else query = docPrduct.whereEqualTo("user_id",FirebaseAuth.getInstance().getCurrentUser().getUid()).whereEqualTo("category_id",category.getId()).orderBy("timestamp", Query.Direction.DESCENDING);
 
 
     }

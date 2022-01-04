@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.e_commerce.R;
+import com.example.e_commerce.activities.LoginActivity;
 import com.example.e_commerce.activities.MainActivity;
 import com.example.e_commerce.databinding.AccountFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,7 +55,8 @@ public class AccountFragment extends Fragment {
         @Override
         public void onClick(View v) {
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(getActivity(),MainActivity.class));
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+
         }
     };
     View.OnClickListener toHistory = new View.OnClickListener() {

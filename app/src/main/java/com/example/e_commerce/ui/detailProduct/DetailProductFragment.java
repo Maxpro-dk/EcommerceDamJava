@@ -63,6 +63,7 @@ public class DetailProductFragment extends Fragment {
         binding=DetailProductFragmentBinding.inflate(inflater,container,false);
         View view=binding.getRoot();
         db=FirebaseFirestore.getInstance();
+        auth=FirebaseAuth.getInstance();
         panier=new ControllerPanier(getContext());
         favorite();
         getData();
@@ -101,7 +102,7 @@ public class DetailProductFragment extends Fragment {
                 basket=new Basket();
                 basket_line=new Basket_line();
 
-                basket.setUser_id("bHwzDTxZGxe5Tob8z1irDI65w7j1");
+                basket.setUser_id(auth.getCurrentUser().getUid());
                 basket.setId_basket(documbasket.getId());
                 basket_line.setId(documentbasketLine.getId());
                 basket_line.setProduct_id(product.getId());

@@ -8,6 +8,7 @@ import com.example.e_commerce.entities.Category;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,6 +23,7 @@ public class CategoryViewModel extends ViewModel {
     MutableLiveData<ArrayList<Category>> liveData;
     ArrayList<Category> categoryArrayList;
     private FirebaseFirestore db;
+    private FirebaseAuth auth;
     private FirebaseStorage storage;
     private Boolean isScrolled= false;
     DocumentSnapshot lastVisible ;

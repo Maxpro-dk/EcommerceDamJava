@@ -137,6 +137,7 @@ public class CreateProductFragment extends Fragment {
         binding = CreateProductFragmentBinding.inflate(inflater, container, false);
         imageView = binding.profileimage;
         View root = binding.getRoot();
+        auth=FirebaseAuth.getInstance();
         init(root);
         MainActivity.hideBottomBar();
 
@@ -295,7 +296,7 @@ public class CreateProductFragment extends Fragment {
             product = new Product();
 
             product.setTimestamp(Date.from(Instant.now()));
-            product.setUser_id("bHwzDTxZGxe5Tob8z1irDI65w7j1");
+            product.setUser_id(auth.getCurrentUser().getUid());
             product.setId(docProduct.getId());
 
         }
