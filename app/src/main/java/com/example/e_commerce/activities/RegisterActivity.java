@@ -111,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account ...");
         progressDialog.show();
 
-        auth.createUserWithEmailAndPassword(users.getEmail(), HashPassword(users.getPassword())).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(users.getEmail(), users.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {

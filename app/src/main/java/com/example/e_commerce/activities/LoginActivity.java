@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
     public void Usersignup() {
         dialog.setMessage("Creating Account ...");
         dialog.show();
-        auth.signInWithEmailAndPassword(email, HashPassword(password)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {

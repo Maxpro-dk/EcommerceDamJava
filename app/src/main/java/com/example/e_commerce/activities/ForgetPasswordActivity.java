@@ -68,6 +68,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     }
 
     private void ForgotPassword() {
+
         auth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
