@@ -30,18 +30,14 @@ public class AllProductViewModel extends ViewModel {
     public static Category category=null;
     Query query;
 
-
     public AllProductViewModel() {
         liveData = new MutableLiveData<>();
         db=FirebaseFirestore.getInstance();
         referenceProduct= db.collection(Product.class.getSimpleName());
-
     }
 
     public void generate() {
         productArrayList = new ArrayList<>();
-
-
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -56,7 +52,6 @@ public class AllProductViewModel extends ViewModel {
         });
 
     }
-
 
     public MutableLiveData<ArrayList<Product>> getLiveData() {
         return liveData;
